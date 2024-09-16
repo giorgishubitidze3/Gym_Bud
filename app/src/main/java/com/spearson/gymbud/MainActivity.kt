@@ -22,7 +22,9 @@ import com.spearson.gymbud.presentation.profile.ProfileScreen
 import com.spearson.gymbud.presentation.session.SessionScreen
 import com.spearson.gymbud.presentation.workouts.WorkoutsScreen
 import com.spearson.gymbud.ui.theme.GymBudTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

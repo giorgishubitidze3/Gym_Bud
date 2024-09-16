@@ -1,9 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id ("com.google.devtools.ksp") version "1.9.0-1.0.11"
-    id ("kotlin-kapt")
-    id ("kotlin-parcelize")
+    alias(libs.plugins.ksp)
+    kotlin("kapt")
+    id("kotlin-parcelize")
+    alias (libs.plugins.hilt.application)
+    alias(libs.plugins.compose.compiler)
 
 }
 
@@ -55,7 +57,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
     packaging {
         resources {
@@ -95,18 +97,22 @@ dependencies {
 
 
     //Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
-//    kapt (libs.hilt.android.compiler)
-//    kapt (libs.androidx.hilt.compiler)
-    implementation (libs.androidx.hilt.navigation.compose)
+//    implementation(libs.hilt.android)
+//    kapt(libs.hilt.compiler)
+//    implementation(libs.androidx.hilt.navigation.compose)
+    implementation (libs.hilt.android)
+    kapt (libs.hilt.android.compiler)
+    implementation (libs.hilt.navigation.compose)
 
 // Kotlin Extensions and Coroutines support for Room
     implementation (libs.androidx.room.ktx)
 
+
+    implementation (libs.javapoet)
+
     //Compose Destinations
-    implementation ("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
-    ksp ("io.github.raamcosta.compose-destinations:ksp:1.1.2-beta")
+    implementation (libs.core)
+    ksp (libs.ksp)
 }
 
 kapt {
