@@ -2,7 +2,7 @@ package com.spearson.gymbud.data.json
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.spearson.gymbud.domain.repository.model.GymExercise
+import com.spearson.gymbud.domain.model.GymExercise
 import javax.inject.Inject
 import javax.inject.Singleton
 

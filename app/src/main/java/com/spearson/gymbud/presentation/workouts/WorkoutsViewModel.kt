@@ -23,6 +23,10 @@ class WorkoutsViewModel @Inject constructor(
 
     private var searchJob: Job? = null
 
+    init{
+        getWorkoutListings("")
+    }
+
     fun onEvent(event: WorkoutsEvent){
         when(event){
             is WorkoutsEvent.OnSearchQueryChange ->{
@@ -42,7 +46,7 @@ class WorkoutsViewModel @Inject constructor(
     ){
         viewModelScope.launch{
             repository
-                .getExercises()
+                .getExercises(query)
                 .collect{result ->
                     when(result){
                         is Resource.Success ->{

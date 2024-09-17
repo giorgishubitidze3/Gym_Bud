@@ -1,4 +1,4 @@
-package com.spearson.gymbud.domain.repository.model
+package com.spearson.gymbud.domain.model
 
 import com.google.gson.annotations.SerializedName
 

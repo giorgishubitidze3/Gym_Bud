@@ -4,7 +4,7 @@ import com.spearson.gymbud.data.json.ExerciseParser
 import com.spearson.gymbud.data.json.JsonParser
 import com.spearson.gymbud.data.repository.ExerciseRepositoryImpl
 import com.spearson.gymbud.domain.repository.ExerciseRepository
-import com.spearson.gymbud.domain.repository.model.GymExercise
+import com.spearson.gymbud.domain.model.GymExercise
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

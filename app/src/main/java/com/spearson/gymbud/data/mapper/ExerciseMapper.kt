@@ -1,7 +1,7 @@
 package com.spearson.gymbud.data.mapper
 
 import com.spearson.gymbud.data.local.GymExerciseDto
-import com.spearson.gymbud.domain.repository.model.GymExercise
+import com.spearson.gymbud.domain.model.GymExercise
 
 fun GymExerciseDto.toGymExercise(): GymExercise {
     return GymExercise(
