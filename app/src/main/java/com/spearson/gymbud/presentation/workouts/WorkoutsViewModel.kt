@@ -1,11 +1,15 @@
 package com.spearson.gymbud.presentation.workouts
 
+import android.app.Application
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.spearson.gymbud.domain.repository.ExerciseRepository
+import com.spearson.gymbud.util.DrawableHelper
 import com.spearson.gymbud.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -15,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WorkoutsViewModel @Inject constructor(
-    private val repository: ExerciseRepository
+    private val repository: ExerciseRepository,
+    private val drawableHelper: DrawableHelper,
 ) : ViewModel()
 {
 
@@ -65,4 +70,9 @@ class WorkoutsViewModel @Inject constructor(
                 }
         }
     }
+
+    fun getDrawableResourceByName(name: String): Int {
+        return drawableHelper.getDrawableResourceByName(name)
+    }
+
 }
