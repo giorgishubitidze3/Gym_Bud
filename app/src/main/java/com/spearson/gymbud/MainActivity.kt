@@ -12,8 +12,8 @@ import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.spearson.gymbud.presentation.graphs.Graph
-import com.spearson.gymbud.presentation.graphs.RootNavigationGraph
+import com.spearson.gymbud.presentation.navigation.graphs.Graph
+import com.spearson.gymbud.presentation.navigation.graphs.RootNavigationGraph
 import com.spearson.gymbud.presentation.home.HomeScreen
 import com.spearson.gymbud.presentation.navigation.BottomBar
 import com.spearson.gymbud.presentation.navigation.Screens
@@ -27,38 +27,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val navController = rememberNavController()
-            NavHost(
-                navController = navController,
-                startDestination = Graph.ROOT
-            ) {
-                composable(route = Graph.ROOT) {
-                    RootNavigationGraph(navController = navController)
-                }
-            }//            GymBudApp()
+            val bottomBarNavController = rememberNavController()
+            RootNavigationGraph(navController = rememberNavController(),bottomBarNavController)
         }
     }
 }
 
-//@Composable
-//fun GymBudApp() {
-//    val navController = rememberNavController()
-//    Scaffold(
-//        bottomBar = {
-//            BottomBar(navController = navController)
-//        }
-//    ) { innerPadding ->
-//        NavHost(
-//            navController = navController,
-//            startDestination = Screens.Home.route,
-//            Modifier.padding(innerPadding)
-//        ) {
-//            composable(Screens.Home.route) { HomeScreen() }
-//            composable(Screens.Session.route) { SessionScreen() }
-//            composable(Screens.Workouts.route) { WorkoutsScreen() }
-//            composable(Screens.Profile.route) { ProfileScreen() }
-//        }
-//    }
-//}
 
 

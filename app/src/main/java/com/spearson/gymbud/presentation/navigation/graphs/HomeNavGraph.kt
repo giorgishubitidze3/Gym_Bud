@@ -1,7 +1,8 @@
-package com.spearson.gymbud.presentation.graphs
+package com.spearson.gymbud.presentation.navigation.graphs
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,7 +13,7 @@ import com.spearson.gymbud.presentation.session.SessionScreen
 import com.spearson.gymbud.presentation.workouts.WorkoutsScreen
 
 @Composable
-fun HomeNavGraph(navController: NavHostController,modifier: Modifier = Modifier){
+fun HomeNavGraph(navController: NavHostController,modifier: Modifier = Modifier,bottomBarNavController: NavController){
     NavHost(
         navController = navController,
         route = Graph.HOME,
@@ -20,7 +21,7 @@ fun HomeNavGraph(navController: NavHostController,modifier: Modifier = Modifier)
         modifier = modifier
     ){
         composable(route= BottomBarScreen.Home.route){
-            HomeScreen(navController = navController)
+            HomeScreen(bottomBarNavController=bottomBarNavController)
         }
 
         composable(route = BottomBarScreen.Profile.route){
