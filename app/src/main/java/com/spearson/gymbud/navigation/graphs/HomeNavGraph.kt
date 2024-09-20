@@ -1,4 +1,4 @@
-package com.spearson.gymbud.presentation.navigation.graphs
+package com.spearson.gymbud.navigation.graphs
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -6,14 +6,14 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.spearson.gymbud.navigation.BottomBarScreen
 import com.spearson.gymbud.presentation.home.HomeScreen
-import com.spearson.gymbud.presentation.navigation.BottomBarScreen
 import com.spearson.gymbud.presentation.profile.ProfileScreen
 import com.spearson.gymbud.presentation.session.SessionScreen
 import com.spearson.gymbud.presentation.workouts.WorkoutsScreen
 
 @Composable
-fun HomeNavGraph(navController: NavHostController,modifier: Modifier = Modifier,bottomBarNavController: NavController){
+fun HomeNavGraph(navController: NavHostController,modifier: Modifier = Modifier, navBarNavController: NavController, logout: () -> Unit){
     NavHost(
         navController = navController,
         route = Graph.HOME,
@@ -21,11 +21,11 @@ fun HomeNavGraph(navController: NavHostController,modifier: Modifier = Modifier,
         modifier = modifier
     ){
         composable(route= BottomBarScreen.Home.route){
-            HomeScreen(bottomBarNavController=bottomBarNavController)
+            HomeScreen(navController,navBarNavController, logout)
         }
 
         composable(route = BottomBarScreen.Profile.route){
-            ProfileScreen()
+            ProfileScreen(logout)
         }
 
         composable(route = BottomBarScreen.Workouts.route){

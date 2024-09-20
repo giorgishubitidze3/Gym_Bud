@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun ProfileScreen(
+    logout: () -> Unit
 ){
    Box(modifier = Modifier.fillMaxSize()){
        Text(text = "ProfileScreen", modifier = Modifier.align(Alignment.Center))

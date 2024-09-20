@@ -1,4 +1,4 @@
-package com.spearson.gymbud.presentation.navigation.graphs
+package com.spearson.gymbud.navigation.graphs
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
