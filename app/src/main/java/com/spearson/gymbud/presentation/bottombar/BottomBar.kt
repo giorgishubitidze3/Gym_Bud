@@ -15,9 +15,9 @@ import com.spearson.gymbud.navigation.BottomBarScreen
 fun BottomBar(navController: NavController) {
     val items = listOf(
         BottomBarScreen.Home,
-        BottomBarScreen.Profile,
+        BottomBarScreen.Session,
         BottomBarScreen.Workouts,
-        BottomBarScreen.Session
+        BottomBarScreen.Profile
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination

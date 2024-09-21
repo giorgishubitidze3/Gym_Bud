@@ -1,6 +1,7 @@
 package com.spearson.gymbud.navigation.graphs
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -9,24 +10,20 @@ import com.spearson.gymbud.presentation.home.HomeScreen
 
 
 @Composable
-fun RootNavigationGraph(navController: NavHostController, navBarNavController: NavController, logout: () -> Unit) {
+fun RootNavigationGraph(navController: NavHostController, logout: () -> Unit, modifier:Modifier) {
     NavHost(
         navController = navController,
         route = Graph.ROOT,
         startDestination = Graph.AUTHENTICATION
     ) {
-        authNavGraph(navController = navController)
-        composable(route = Graph.HOME) {
-            HomeScreen(navController,navBarNavController = navBarNavController,logout = logout)
-        }
-//        composable(
-//            route = Screens.AppScaffold.route,
-//            content ={
-//                AppScaffold(navController = navBarNavController){
-//                    navController.navigate(Screens.Home.route)
-//                }
-//            }
-//        )
+        authNavGraph(navController = navController,
+            onLoginSuccess = {
+                navController.popBackStack()
+                navController.navigate(Graph.HOME)
+            })
+
+        homeNavGraph(navController, modifier = modifier ,logout)
+
     }
 }
 

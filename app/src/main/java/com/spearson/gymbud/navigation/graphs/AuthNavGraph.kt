@@ -1,5 +1,6 @@
 package com.spearson.gymbud.navigation.graphs
 
+import androidx.compose.animation.EnterTransition
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 
@@ -11,17 +12,14 @@ import com.spearson.gymbud.presentation.auth.login.LoginScreen
 import com.spearson.gymbud.presentation.auth.sign_up.SignUpScreen
 
 
-fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
+fun NavGraphBuilder.authNavGraph(navController: NavHostController, onLoginSuccess: () -> Unit) {
     navigation(
         route = Graph.AUTHENTICATION,
-        startDestination = AuthScreen.Login.route
+        startDestination = AuthScreen.Login.route,
     ) {
         composable(route = AuthScreen.Login.route) {
             LoginScreen(
-                onClick = {
-                    navController.popBackStack()
-                    navController.navigate(Graph.HOME)
-                    },
+                onClick = onLoginSuccess,
                 onSignUpClick = {
                     navController.navigate(AuthScreen.SignUp.route)
                 },
