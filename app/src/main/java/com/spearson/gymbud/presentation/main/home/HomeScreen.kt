@@ -1,4 +1,4 @@
-package com.spearson.gymbud.presentation.home
+package com.spearson.gymbud.presentation.main.home
 
 
 import android.annotation.SuppressLint

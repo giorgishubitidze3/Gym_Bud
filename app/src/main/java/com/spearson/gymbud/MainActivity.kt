@@ -13,7 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.spearson.gymbud.navigation.Screens
-import com.spearson.gymbud.presentation.home.HomeScreen
+import com.spearson.gymbud.presentation.main.home.HomeScreen
 import com.spearson.gymbud.navigation.graphs.Graph
 
 import com.spearson.gymbud.navigation.graphs.RootNavigationGraph

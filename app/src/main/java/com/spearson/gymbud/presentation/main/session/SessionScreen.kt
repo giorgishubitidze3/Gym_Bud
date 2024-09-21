@@ -1,4 +1,4 @@
-package com.spearson.gymbud.presentation.session
+package com.spearson.gymbud.presentation.main.session
 
 
 import androidx.compose.foundation.layout.Arrangement

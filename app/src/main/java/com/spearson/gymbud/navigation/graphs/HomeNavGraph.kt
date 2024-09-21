@@ -7,15 +7,21 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import androidx.navigation.navArgument
+import com.spearson.gymbud.domain.model.GymExercise
 import com.spearson.gymbud.navigation.BottomBarScreen
-import com.spearson.gymbud.presentation.home.HomeScreen
-import com.spearson.gymbud.presentation.profile.ProfileScreen
-import com.spearson.gymbud.presentation.session.SessionScreen
-import com.spearson.gymbud.presentation.workouts.WorkoutsScreen
+import com.spearson.gymbud.navigation.Screens
+import com.spearson.gymbud.presentation.main.home.HomeScreen
+import com.spearson.gymbud.presentation.main.profile.ProfileScreen
+import com.spearson.gymbud.presentation.main.session.SessionScreen
+import com.spearson.gymbud.presentation.main.workouts.WorkoutsScreen
+import com.spearson.gymbud.presentation.main.workouts.workouts_detail.WorkoutDetailScreen
+import kotlinx.serialization.json.Json
 
 
 fun NavGraphBuilder.homeNavGraph(navController: NavHostController, modifier: Modifier = Modifier, logout: () -> Unit){
@@ -32,10 +38,20 @@ fun NavGraphBuilder.homeNavGraph(navController: NavHostController, modifier: Mod
             ProfileScreen(logout = logout)
         }
         composable(route = BottomBarScreen.Workouts.route) {
-            WorkoutsScreen()
+            WorkoutsScreen(navController)
         }
         composable(route = BottomBarScreen.Session.route) {
             SessionScreen()
+        }
+        composable(
+            route = "${Screens.WorkoutDetails.route}/{workout}",
+            arguments = listOf(navArgument("workout"){type = NavType.StringType})
+        ){backStackEntry ->
+            val workoutJson = backStackEntry.arguments?.getString("workout")
+            val workout = workoutJson?.let{ Json.decodeFromString<GymExercise>(it)}
+            workout?.let{
+                WorkoutDetailScreen(exercise = it)
+            }
         }
     }
 }

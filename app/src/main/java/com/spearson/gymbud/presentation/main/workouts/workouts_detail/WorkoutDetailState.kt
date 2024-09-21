@@ -1,4 +1,4 @@
-package com.spearson.gymbud.presentation.workouts.workouts_detail
+package com.spearson.gymbud.presentation.main.workouts.workouts_detail
 
 import com.spearson.gymbud.domain.model.GymExercise
 

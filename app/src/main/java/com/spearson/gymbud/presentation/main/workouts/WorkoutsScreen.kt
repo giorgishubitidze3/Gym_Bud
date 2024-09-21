@@ -1,4 +1,4 @@
-package com.spearson.gymbud.presentation.workouts
+package com.spearson.gymbud.presentation.main.workouts
 
 
 import androidx.compose.foundation.clickable
@@ -18,10 +18,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 
 @Composable
 fun WorkoutsScreen(
+    navHostController: NavHostController,
     viewModel: WorkoutsViewModel = hiltViewModel()
 ){
     val state = viewModel.state
@@ -32,7 +37,8 @@ fun WorkoutsScreen(
         OutlinedTextField(
             value = state.searchQuery,
             onValueChange = {
-                viewModel.onEvent(WorkoutsEvent.OnSearchQueryChange(it)
+                viewModel.onEvent(
+                    WorkoutsEvent.OnSearchQueryChange(it)
                 )
             },
             modifier = Modifier
@@ -56,7 +62,8 @@ fun WorkoutsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp, vertical = 8.dp)
                         .clickable{
-
+                            val workoutJson = Json.encodeToString(state.workouts[i])
+                            navHostController.navigate("workoutDetails/$workoutJson")
                         }
                 )
                 if(i < state.workouts.size){

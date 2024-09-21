@@ -7,6 +7,7 @@ plugins {
     alias (libs.plugins.hilt.application)
     alias(libs.plugins.compose.compiler)
 
+    kotlin("plugin.serialization") version "2.0.20"
 }
 
 kotlin {
@@ -112,6 +113,10 @@ dependencies {
     implementation (libs.javapoet)
 
     implementation ("androidx.navigation:navigation-compose:2.8.0")
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
+
+    implementation("com.google.accompanist:accompanist-drawablepainter:0.35.0-alpha")
 
 
     //Compose Destinations

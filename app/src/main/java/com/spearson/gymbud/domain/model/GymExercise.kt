@@ -1,7 +1,9 @@
 package com.spearson.gymbud.domain.model
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class GymExercise(
     val bodyPart: String,
     val equipment: String,

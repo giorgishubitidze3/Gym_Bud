@@ -5,5 +5,5 @@ sealed class Screens(val route: String) {
     object Session : Screens("session")
     object Workouts : Screens("workouts")
     object Profile : Screens("profile")
-    object AppScaffold: Screens("app_scaffold")
+    object WorkoutDetails: Screens("workoutDetails")
 }

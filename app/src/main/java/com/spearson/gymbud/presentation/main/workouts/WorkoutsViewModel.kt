@@ -1,4 +1,4 @@
-package com.spearson.gymbud.presentation.workouts
+package com.spearson.gymbud.presentation.main.workouts
 
 import android.app.Application
 import android.content.Context

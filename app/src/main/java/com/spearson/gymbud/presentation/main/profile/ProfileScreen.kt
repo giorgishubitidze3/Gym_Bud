@@ -1,4 +1,4 @@
-package com.spearson.gymbud.presentation.profile
+package com.spearson.gymbud.presentation.main.profile
 
 
 import androidx.compose.foundation.layout.Box
